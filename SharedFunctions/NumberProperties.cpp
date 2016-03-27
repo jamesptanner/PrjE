@@ -16,34 +16,44 @@ vector<__int64> findAbundants(const __int64 max)
 vector<__int64> getFactors(const __int64 num) {
 	vector<__int64> divisors (1,1);
 	__int64 pair = 0;
-	for (__int64 candidate = 2; candidate < num; candidate++) {
-		if ((num % candidate) == 0) {
-			if (find(divisors.begin(),divisors.end(),candidate)!=divisors.end()){
+	for (__int64 candidate = 2; candidate < ((num/2)+1); candidate++)
+    {
+		if ((num % candidate) == 0)
+        {
+			if (find(divisors.begin(),divisors.end(),candidate)!=divisors.end())
+            {
 				break;
-				}
+            }
 			divisors.push_back(candidate);
 			pair = num / candidate;
 
-			if(pair!=candidate){divisors.push_back(pair);}
-			sort(divisors.begin(), divisors.end());
-			}
-		}
+			if(pair!=candidate)
+            {
+                divisors.push_back(pair);
+            }
+        }
+    }
 
+    sort(divisors.begin(), divisors.end());
 	return divisors;
-	}
+}
 
-vector<__int64> getPrimeFactors(const __int64 num){
-	vector<__int64> factorList = getFactors(num);
-	//for (vector<__int64>::iterator it = factorList.begin(); it != factorList.end();
-	for (__int64 i = 0; i<factorList.size();
-		i++) {
-			if (!isPrime(factorList.at(i)))  {
-				vecRemove(&factorList,factorList.at(i));				
-				if(i!=0)i--;
-				}
-		}
-	return factorList;
+vector<__int64> getPrimeFactors(__int64 num){
+    vector<__int64> factorList;
+    for (__int64 i = 2; i<sqrt(num)+1 && num != 1; i++)
+    {
+		if (isPrime(i) && ((i % num) == 0))
+        {
+			do
+            {
+                num /=i;
+            } while ((i % num) == 0));
+            
+            factorList.push_back(i)
+        }
 	}
+	return factorList;
+}
 
 bool isPrime(__int64 candidate){
 	__int64 i = candidate;
