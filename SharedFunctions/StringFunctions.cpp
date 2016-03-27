@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "EulerShared.h"
 
 bool isPalindrome(char* palindrome){

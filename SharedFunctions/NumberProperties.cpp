@@ -1,10 +1,9 @@
-#include "stdafx.h"
 #include <iostream>
 #include "EulerShared.h"
-vector<__int64> findAbundants(const __int64 max)
+vector<__int64_t> findAbundants(const __int64_t max)
 	{
-	vector<__int64> abundants;
-	for (__int64 i = 1; i <= max; i++)
+	vector<__int64_t> abundants;
+	for (__int64_t i = 1; i <= max; i++)
 		{
 		if(isAbundant(i)){
 			abundants.push_back(i);
@@ -13,10 +12,10 @@ vector<__int64> findAbundants(const __int64 max)
 	return abundants;
 	}
 
-vector<__int64> getFactors(const __int64 num) {
-	vector<__int64> divisors (1,1);
-	__int64 pair = 0;
-	for (__int64 candidate = 2; candidate < ((num/2)+1); candidate++)
+vector<__int64_t> getFactors(const __int64_t num) {
+	vector<__int64_t> divisors (1,1);
+	__int64_t pair = 0;
+	for (__int64_t candidate = 2; candidate < ((num/2)+1); candidate++)
     {
 		if ((num % candidate) == 0)
         {
@@ -38,32 +37,32 @@ vector<__int64> getFactors(const __int64 num) {
 	return divisors;
 }
 
-vector<__int64> getPrimeFactors(__int64 num){
-    vector<__int64> factorList;
-    for (__int64 i = 2; i<sqrt(num)+1 && num != 1; i++)
+vector<__int64_t> getPrimeFactors(__int64_t num){
+    vector<__int64_t> factorList;
+    for (__int64_t i = 2; i<sqrt(num)+1 && num != 1; i++)
     {
-		if (isPrime(i) && ((i % num) == 0))
+	if (isPrime(i) && ((i % num) == 0))
         {
-			do
+            do
             {
                 num /=i;
-            } while ((i % num) == 0));
+            } while ((i % num) == 0);
             
-            factorList.push_back(i)
+            factorList.push_back(i);
         }
-	}
+    }
 	return factorList;
 }
 
-bool isPrime(__int64 candidate){
-	__int64 i = candidate;
+bool isPrime(__int64_t candidate){
+	__int64_t i = candidate;
 	if (i==2 || i==3 || i==5 || i==7)
 		return true;
 	if (i<9 || i%2==0 || i%3 == 0) 
 		return false;
 
-	__int64 r = (int) floor(sqrt(candidate));
-	__int64 f = 5;
+	__int64_t r = (int) floor(sqrt(candidate));
+	__int64_t f = 5;
 	while (f<=r){
 		if(i%f ==0) return false;
 		if(i%(f+2)==0) return false;
@@ -73,9 +72,16 @@ bool isPrime(__int64 candidate){
 	return true;
 
 	}
-bool isAbundant(const __int64 num) {
-	return vecSum(getFactors(num)) > num;
+bool isAbundant(const __int64_t num) 
+{
+	vector<__int64_t> factors = getFactors(num);
+	__int64_t sum =0;
+	for (vector<__int64_t>::iterator iter = factors.begin(); iter != factors.end(); iter++)
+        {
+             sum += *iter;
 	}
+	return sum > num;
+}
 
 bool isPandigital(char* candidate){
 
@@ -96,11 +102,11 @@ bool isNPandigital(int n, char* candidate){
 	return true;
 	}
 
-DWORD getRecipricalLength(DWORD dwNume, DWORD dwDemon)
+int getRecipricalLength(int dwNume, int dwDemon)
 {
-	DWORD place = 1;
-	LPDWORD map;
-	map = (LPDWORD) calloc(dwDemon,sizeof(DWORD));
+	int place = 1;
+	int * map;
+	map = (int*) calloc(dwDemon,sizeof(int));
 	if (map == NULL)
 		return -1;
 	while(dwNume !=0)
@@ -108,7 +114,7 @@ DWORD getRecipricalLength(DWORD dwNume, DWORD dwDemon)
 		
 		map[dwNume] = place; 
 		dwNume = (dwNume * 10) % dwDemon;
-		if(map[dwNume]!=NULL){
+		if(map[dwNume] != 0){
 			return place - map[dwNume];
 		}
 		place++;
