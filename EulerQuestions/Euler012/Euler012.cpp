@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Euler012.h"
 
 void Euler012(){

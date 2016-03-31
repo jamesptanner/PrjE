@@ -1,17 +1,16 @@
-#include "stdafx.h"
 #include "Euler032.h"
 #include <iostream>
 void Euler032(){
 	int sum = 0;
 	int divisor = 0;
-	vector<__int64> factors;
+	vector<__int64_t> factors;
 	char pandigitalCandidate[15];
 	for( int i=1;i<=PANDIGITAL_PRODUCT_LIMIT;i++){
 
 		factors = getFactors(i);
-		for(vector<__int64>::iterator it = factors.begin(); it !=factors.end();it++){
+		for(vector<__int64_t>::iterator it = factors.begin(); it !=factors.end();it++){
 			divisor = i / *it;
-			sprintf_s(pandigitalCandidate,"%d%d%d",i,divisor,*it);
+			sprintf(pandigitalCandidate,"%d%d%lld",i,divisor,*it);
 			if(isNPandigital(9,pandigitalCandidate)){
 				sum+=i;
 				break;

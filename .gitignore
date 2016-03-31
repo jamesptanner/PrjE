@@ -157,3 +157,4 @@ $RECYCLE.BIN/
 #unix outputs
 *.so
 
+include/

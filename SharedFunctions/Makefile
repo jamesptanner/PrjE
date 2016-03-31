@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-std=c++14 -Wall -ggdb
 LDFLAGS=--shared
-BIN=EulerShared.so
+BIN=../obj/EulerShared.so
 
 SRC=$(wildcard *.cpp)
 OBJ=$(patsubst %.cpp,obj/%.o,$(SRC))

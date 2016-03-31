@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Euler011.h"
 
 #define WIDTH  20

@@ -1,27 +1,28 @@
 // Euler23-Non Abundant Sums.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 
 #include "Euler023.h"
+#include <vector>
 
+using namespace std;
 
-vector<_int64> findAllNonAbundantVals(const vector<_int64> abundants){
-	vector<_int64> results;
-	vector<_int64> tempAbundants = abundants;
+vector<int64_t> findAllNonAbundantVals(const vector<int64_t> abundants){
+	vector<int64_t> results;
+	vector<int64_t> tempAbundants = abundants;
 
 	for (int i = 1; i <= LIMIT; i++)
 	{
 		results.push_back(i);
 	}
 
-	for (vector<_int64>::const_iterator ita = abundants.begin(); ita != abundants.end();ita++){
-		for (vector<_int64>::iterator itb = tempAbundants.begin(); itb != tempAbundants.end();itb++){
+	for (vector<int64_t>::const_iterator ita = abundants.begin(); ita != abundants.end();ita++){
+		for (vector<int64_t>::iterator itb = tempAbundants.begin(); itb != tempAbundants.end();itb++){
 
 			if ((*ita + *itb) > LIMIT){
 				break;
 			}
-			vector<_int64>::iterator abundantSum =find(results.begin(),results.end(),*ita + *itb);
+			vector<int64_t>::iterator abundantSum =find(results.begin(),results.end(),*ita + *itb);
 
 			if (abundantSum != results.end()){
 				results.erase( abundantSum);
@@ -39,17 +40,21 @@ void Euler023(){
 
 	start = clock();
 
-	vector<_int64> abundants = findAbundants(LIMIT);
+	vector<int64_t> abundants = findAbundants(LIMIT);
 	abundanceIdentification = clock();
 	cout<< "Abundant numbers idenfied. "<<abundants.size()<<" abundant numbers found."<< endl;
 
 
-	vector<_int64> nonAbundantPairVal = findAllNonAbundantVals(abundants);
+	vector<int64_t> nonAbundantPairVal = findAllNonAbundantVals(abundants);
 	nonAbundantValsIdentification = clock();
 	cout << "Idenified all number that are not the sum of two abundants. " << nonAbundantPairVal.size() << " numbers found." << endl;
 
 
-	unsigned _int64 result = vecSum(nonAbundantPairVal);
+	int64_t result = 0;
+	for(vector<int64_t>::const_iterator iter = nonAbundantPairVal.begin(); iter != nonAbundantPairVal.end(); iter++)
+        {
+            result += *iter;
+        }
 	cout<<"sum of the values is "<< result << endl << endl;
 	end = clock();
 

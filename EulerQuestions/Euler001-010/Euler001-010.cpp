@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "Euler001-010.h"
 
 void Euler001()
@@ -29,8 +28,9 @@ void Euler002(){
 }
 
 void Euler003(){
-__int64 maxprime = vecMax(getPrimeFactors(FACTORER));
-	cout<<"Problem 3 answer:" <<maxprime<<endl;
+       std::vector<__int64_t> primes = getPrimeFactors(FACTORER);
+	std::sort(primes.begin(),primes.end());
+	cout<<"Problem 3 answer:" << *(primes.end()) << endl;
 	}
 
 void Euler004(){
@@ -43,7 +43,7 @@ void Euler004(){
 			palindromeCandidate = i*j;
 			if(palindromeCandidate<max) continue;
 			char strPalindromeCandidate[PALINDROME_MAX_LENGTH];
-			sprintf_s(strPalindromeCandidate,"%d",palindromeCandidate);
+			sprintf(strPalindromeCandidate,"%d",palindromeCandidate);
 
 			if(isPalindrome(strPalindromeCandidate) && palindromeCandidate>max){
 				max = palindromeCandidate;
