@@ -1,23 +1,31 @@
 CXX=g++
 CXXFLAGS=-std=c++14 -Wall -ggdb
 LDFLAGS=--shared
-BIN=../obj/EulerShared.so
+BIN=../out/libSharedFunctions.so
 
 SRC=$(wildcard *.cpp)
-OBJ=$(patsubst %.cpp,obj/%.o,$(SRC))
+OBJ=$(patsubst %.cpp,../obj/%.o,$(SRC))
 
 all: $(OBJ)
 	$(CXX) $(LDFLAGS) -o $(BIN) $^
+	cp EulerShared.h ../include/
 
-$(OBJ): | obj
+$(OBJ): | ../obj ../out ../include
 
-obj:
+../obj:
 	@mkdir -p $@
 
-obj/%.o: %.cpp
+../out:
+	@mkdir -p $@
+
+../include: 
+	@mkdir -p $@
+
+../obj/%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -o $@ -c $< 
 
 clean:
 	rm -f $(BIN)
-	rm -rf obj
-
+	rm -rf ../obj
+	rm -rf ../out
+	rm -rf ../include
