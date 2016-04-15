@@ -1,7 +1,7 @@
 CXX=g++
 CXXFLAGS=-std=c++14 -Wall -ggdb -I ../include
-LDFLAGS=-shared -L../out/ -lSharedFunctions
-BIN=../out/libEulerQuestions.so
+LDFLAGS= -L../out/ -lEulerRunner -lSharedFunctions
+BIN=../out/EulerQuestions
 SRC := $(shell find . -name '*.cpp')
 OBJ := $(addprefix ../obj/,$(notdir $(SRC:.cpp=.o)))
 

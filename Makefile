@@ -1,12 +1,16 @@
-all: EulerShared EulerQuestions
+all: EulerQuestions
 
 EulerShared:
 	$(MAKE) -C SharedFunctions
 	
-EulerQuestions: EulerShared
+runner:
+	$(MAKE) -C EulerRunner
+
+EulerQuestions: EulerShared runner
 	$(MAKE) -C EulerQuestions
 
 clean:
 	rm -rf out
 	rm -rf obj
 	rm -rf include
+

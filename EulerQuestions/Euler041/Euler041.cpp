@@ -6,7 +6,7 @@ void Euler041(){
 	__int64_t max = 0;
 	__int64_t i = 1;
 	while(ceil(log10(i))<=7){
-		sprintf(numstr,"%d",i);
+		sprintf(numstr,"%lld",i);
 		if (isNPandigital(((int)log10(i))+1,numstr) && isPrime(i)){
 			max = i;
 			}
