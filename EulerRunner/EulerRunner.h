@@ -3,19 +3,34 @@
 
 using namespace std;
 
-class EulerQuestion 
+class EulerQuestion
 {
     public:
-        EulerQuestion();
-        ~EulerQuestion();
+        EulerQuestion(int id) : questionID(id){}
+        ~EulerQuestion(){}
         void runQuestion();
-	static bool compare(EulerQuestion* i, EulerQuestion* j );
+        int getQuestionID(){return questionID;}
+	    static bool compare(EulerQuestion* i, EulerQuestion* j );
     private:
-	int questionID;
+        int questionID;
     protected:
         virtual void QuestionFunc() = 0;
-
 };
 
-void registerEulerQuestion(EulerQuestion &);
+class TestRegistry
+{
+    public:
+         static void addTest (EulerQuestion*);
+};
 
+class RegisterTest
+{
+public:
+    inline RegisterTest(EulerQuestion * pUnitTest)
+    {
+        TestRegistry::addTest(pUnitTest );
+    }
+};
+
+//shortcut macro
+#define REGISTER_TEST(c_type) RegisterTest test_##c_type(new c_type())

@@ -7,10 +7,6 @@
 #include <boost/progress.hpp>
 
 static vector<EulerQuestion*> eulerQuestions;
-void registerEulerQuestion(EulerQuestion & question)
-{
-    eulerQuestions.push_back(&question);
-}
 
 bool EulerQuestion::compare(EulerQuestion* i, EulerQuestion* j )
 {
@@ -19,10 +15,19 @@ bool EulerQuestion::compare(EulerQuestion* i, EulerQuestion* j )
 
 void EulerQuestion::runQuestion()
 {
-    boost::progress_timer timer;
+    std::clock_t    start;
+
+    start = std::clock();
+
     QuestionFunc();
+    std::cout << "Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000) << " ms" << std::endl;
+
 }
 
+void TestRegistry::addTest(EulerQuestion* question)
+{
+    eulerQuestions.push_back(question);
+}
 int main(int argc, char** argv)
 {
     if(!eulerQuestions.empty())
@@ -30,9 +35,10 @@ int main(int argc, char** argv)
 	sort(eulerQuestions.begin(),eulerQuestions.end(),EulerQuestion::compare);
         for(vector<EulerQuestion*>::iterator iter = eulerQuestions.begin(); iter != eulerQuestions.end(); iter++)
         {
+            std::cout << "Running Question " << (*iter)->getQuestionID() << std::endl;
              (*iter)->runQuestion();
         }
     }
-    
+
 
 }

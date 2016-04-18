@@ -13,7 +13,7 @@ all: $(OBJ) | ../out
 $(OBJ): | ../obj
 
 ../obj/%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -o $@ -c $< 
+	$(CXX) $(CXXFLAGS) -o $@ -c $<
 
 ../obj:
 	@mkdir -p $@
@@ -25,4 +25,3 @@ clean:
 	rm -f $(BIN)
 	rm -rf ../obj
 	rm -rf ../out
-
