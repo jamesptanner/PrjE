@@ -30,6 +30,10 @@ void TestRegistry::addTest(EulerQuestion* question)
 }
 int main(int argc, char** argv)
 {
+    std::clock_t    start;
+
+    start = std::clock();
+
     if(!eulerQuestions.empty())
     {
 	sort(eulerQuestions.begin(),eulerQuestions.end(),EulerQuestion::compare);
@@ -39,6 +43,7 @@ int main(int argc, char** argv)
              (*iter)->runQuestion();
         }
     }
+    std::cout << "Total Time: " << (std::clock() - start) / (double)(CLOCKS_PER_SEC / 1000)/1000 << " s" << std::endl;
 
 
 }
