@@ -36,7 +36,7 @@ class Euler017 : public EulerQuestion
         return response;
     }
 public:
-    Euler017() : EulerQuestion(17)
+    Euler017(std::string name, int id) : EulerQuestion(name,id)
     {
         numbers[1000]="thousand";
         numbers[100]="hundred";
@@ -80,4 +80,4 @@ public:
 
 };
 
-REGISTER_TEST( Euler017);
+REGISTER_TEST("Problem 17: Number letter counts",17, Euler017);

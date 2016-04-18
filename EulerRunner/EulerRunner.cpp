@@ -35,7 +35,7 @@ int main(int argc, char** argv)
 	sort(eulerQuestions.begin(),eulerQuestions.end(),EulerQuestion::compare);
         for(vector<EulerQuestion*>::iterator iter = eulerQuestions.begin(); iter != eulerQuestions.end(); iter++)
         {
-            std::cout << "Running Question " << (*iter)->getQuestionID() << std::endl;
+            std::cout << "Running " << (*iter)->getDesc() << std::endl;
              (*iter)->runQuestion();
         }
     }

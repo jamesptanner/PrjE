@@ -6,13 +6,15 @@ using namespace std;
 class EulerQuestion
 {
     public:
-        EulerQuestion(int id) : questionID(id){}
+        EulerQuestion(std::string desc, int id) : questionID(id), desc(desc){}
         ~EulerQuestion(){}
         void runQuestion();
         int getQuestionID(){return questionID;}
+        std::string getDesc(){return desc;}
 	    static bool compare(EulerQuestion* i, EulerQuestion* j );
     private:
         int questionID;
+        std::string desc;
     protected:
         virtual void QuestionFunc() = 0;
 };
@@ -33,4 +35,4 @@ public:
 };
 
 //shortcut macro
-#define REGISTER_TEST(c_type) RegisterTest test_##c_type(new c_type())
+#define REGISTER_TEST(name,id, c_type) RegisterTest test_##c_type(new c_type(name,id))
