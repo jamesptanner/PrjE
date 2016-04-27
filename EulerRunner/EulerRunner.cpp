@@ -4,6 +4,7 @@
 #include "EulerRunner.h"
 #include <algorithm>
 #include <boost/progress.hpp>
+#include <list>
 #include <vector>
 
 static vector<EulerQuestion *> eulerQuestions;
@@ -28,15 +29,27 @@ void TestRegistry::addTest(EulerQuestion *question) {
 }
 int main(int argc, char **argv) {
   std::clock_t start;
+  std::list<int> questionsToRun;
+  if (argc > 1) {
+    for (int i = 1; i < argc; i++) {
+      questionsToRun.push_back(atoi(argv[i]));
+    }
+  }
+  questionsToRun.unique();
+  questionsToRun.sort();
 
   start = std::clock();
-
   if (!eulerQuestions.empty()) {
     sort(eulerQuestions.begin(), eulerQuestions.end(), EulerQuestion::compare);
     for (vector<EulerQuestion *>::iterator iter = eulerQuestions.begin();
          iter != eulerQuestions.end(); iter++) {
-      std::cout << "Running " << (*iter)->getDesc() << std::endl;
-      (*iter)->runQuestion();
+      if (argc == 1 || questionsToRun.front() == (*iter)->getQuestionID()) {
+        std::cout << "Running " << (*iter)->getDesc() << std::endl;
+        (*iter)->runQuestion();
+        if (questionsToRun.size() > 0) {
+          questionsToRun.pop_front();
+        }
+      }
     }
   }
   std::cout << "Total Time: "
