@@ -9,7 +9,7 @@ VPATH=$(dir $(SRC))
 
 all: $(OBJ) | ../out
 	$(CXX) $(LDFLAGS) -o $(BIN) $^
-
+	cp -r res ../out/
 $(OBJ): | ../obj
 
 ../obj/%.o: %.cpp
