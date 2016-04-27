@@ -44,8 +44,7 @@ public:
   long long FACTORER = 600851475143L;
   void QuestionFunc() {
     std::vector<__int64_t> primes = getPrimeFactors(FACTORER);
-    std::sort(primes.begin(), primes.end());
-    cout << "Problem 3 answer:" << *(primes.end()) << endl;
+    cout << "Problem 3 answer:" << primes.back() << endl;
   }
 };
 
@@ -211,7 +210,7 @@ public:
 };
 REGISTER_TEST("Problem 1: Multiples of 3 and 5", 1, Euler001);
 REGISTER_TEST("Problem 2: Even Fibonacci numbers", 2, Euler002);
-// REGISTER_TEST("Problem 3: Largest prime factor",3, Euler003);
+REGISTER_TEST("Problem 3: Largest prime factor", 3, Euler003);
 REGISTER_TEST("Problem 4: Largest palindrome product", 4, Euler004);
 REGISTER_TEST("Problem 5: Smallest multiple", 5, Euler005);
 REGISTER_TEST("Problem 6: Sum square difference", 6, Euler006);
