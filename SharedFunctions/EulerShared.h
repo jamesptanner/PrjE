@@ -3,7 +3,7 @@
 #include <map>
 #include <algorithm>
 #include <cmath>
-#include <cString>
+#include <cstring>
 #include <cassert>
 
 using namespace std;
