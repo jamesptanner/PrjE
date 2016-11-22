@@ -1,6 +1,6 @@
 CXX=g++
-CXXFLAGS=-std=c++14 -Wall -ggdb
-LDFLAGS=--shared
+CXXFLAGS=-std=c++14 -Wall -ggdb 
+LDFLAGS=--shared -fPIC
 BIN=../out/libSharedFunctions.so
 
 SRC=$(wildcard *.cpp)
