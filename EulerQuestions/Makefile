@@ -1,5 +1,5 @@
 CXX=g++
-CXXFLAGS=-std=c++14 -Wall -ggdb -I ../include
+CXXFLAGS=-std=c++14 -Wall -ggdb -I ../include -fPIC
 LDFLAGS= -L../out/ -lEulerRunner -lSharedFunctions
 BIN=../out/EulerQuestions
 SRC := $(shell find . -name '*.cpp')
