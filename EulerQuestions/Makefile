@@ -8,7 +8,7 @@ OBJ := $(addprefix ../obj/,$(notdir $(SRC:.cpp=.o)))
 VPATH=$(dir $(SRC))
 
 all: $(OBJ) | ../out
-	$(CXX) $(LDFLAGS) -o $(BIN) $^
+	$(CXX) -o $(BIN) $^ $(LDFLAGS)
 	cp -r res ../out/
 $(OBJ): | ../obj
 
