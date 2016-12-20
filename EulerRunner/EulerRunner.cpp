@@ -11,7 +11,6 @@ static vector<EulerQuestion *> eulerQuestions;
 
 bool EulerQuestion::compare(EulerQuestion *i, EulerQuestion *j) {
   return i->questionID < j->questionID;
-	int a = 123;
 }
 
 void EulerQuestion::runQuestion() {
