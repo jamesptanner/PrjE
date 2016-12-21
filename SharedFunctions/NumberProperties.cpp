@@ -110,9 +110,12 @@ int getRecipricalLength(int dwNume, int dwDemon) {
     map[dwNume] = place;
     dwNume = (dwNume * 10) % dwDemon;
     if (map[dwNume] != 0) {
-      return place - map[dwNume];
+      int ret = place - map[dwNume];
+      free(map);
+      return ret;
     }
     place++;
   }
+  free(map);
   return 0;
 }
