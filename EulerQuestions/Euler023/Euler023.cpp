@@ -23,7 +23,7 @@ using namespace std;
 
 class Euler023 : public EulerQuestion {
 private:
-	const int64_t LIMIT 28123;
+	const int64_t LIMIT = 28123;
     vector<int64_t> findAllNonAbundantVals(const vector<int64_t> abundants){
         vector<int64_t> results;
         vector<int64_t> tempAbundants = abundants;
