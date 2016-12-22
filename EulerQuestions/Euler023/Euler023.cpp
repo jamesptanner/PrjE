@@ -7,6 +7,7 @@
 #include <vector>
 
 using namespace std;
+
 class Euler023 : public EulerQuestion {
 private:
     vector<int64_t> findAllNonAbundantVals(const vector<int64_t> abundants){
@@ -39,7 +40,7 @@ public:
 
     Euler023(std::string name, int id) : EulerQuestion(name, id) {}
 
-    void questionFunc(){
+    void QuestionFunc(){
         clock_t start = 0, abundanceIdentification=0,nonAbundantValsIdentification=0,end = 0;
 
 
