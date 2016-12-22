@@ -72,5 +72,6 @@ public:
         cout << "Total Calculations took "<< (double) (end - start)/CLOCKS_PER_SEC << " seconds."<< endl; 
 
     }
-}
+};
+
 REGISTER_TEST("Problem 23: Non-abundant sums",23,Euler023);
