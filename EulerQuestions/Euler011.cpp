@@ -44,7 +44,7 @@ int grid[WIDTH][HEIGHT] = {
      33, 48, 61, 43, 52, 1,  89, 19, 67, 48}};
 
 int lines[8][4][2] = {{{0, 0}, {0, 1}, {0, 2}, {0, 3}},
-                      {{0, 0}, {1, 1}, {1, 2}, {1, 3}},
+                      {{0, 0}, {1, 1}, {2, 2}, {3, 3}},
                       {{0, 0}, {1, 0}, {2, 0}, {3, 0}},
                       {{0, 0}, {1, -1}, {2, -2}, {3, -3}},
                       {{0, 0}, {0, -1}, {0, -2}, {0, -3}},
@@ -67,7 +67,7 @@ public:
           unsigned short xmax, ymax;
           xmax = x + lines[line][3][X];
           ymax = y + lines[line][3][Y];
-          if (xmax < 0 || ymax < 0 || xmax >= 20 || ymax >= 20)
+          if (|| xmax >= 20 || ymax >= 20)
             continue;
 
           unsigned int product = 1;
