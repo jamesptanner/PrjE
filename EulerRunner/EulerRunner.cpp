@@ -7,6 +7,8 @@
 #include <list>
 #include <vector>
 
+using namespace std;
+
 static vector<EulerQuestion *> eulerQuestions;
 
 bool EulerQuestion::compare(EulerQuestion *i, EulerQuestion *j) {
