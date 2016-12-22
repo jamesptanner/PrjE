@@ -72,4 +72,4 @@ public:
 
     }
 }
-REGISTER_TEST ("Problem 23: Non-abundant sums",23,Euler023);
+REGISTER_TEST("Problem 23: Non-abundant sums",23,Euler023);
