@@ -75,14 +75,14 @@ public:
             product *= grid[x + lines[line][dist][X]][y + lines[line][dist][Y]];
           }
           if (product > max) {
-            cout << "new max: " << max << endl;
+            std::cout << "new max: " << max << endl;
             max = product;
           }
         }
       }
     }
 
-    cout << "Problem 11 answer: " << max << endl;
+    std::cout << "Problem 11 answer: " << max << endl;
   }
 };
 REGISTER_TEST("Problem 11:Largest product in a grid", 11, Euler011);
