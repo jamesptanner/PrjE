@@ -3,7 +3,7 @@
 
 #include "EulerRunner.h"
 #include <algorithm>
-#include <boost/progress.hpp>
+//#include <boost/progress.hpp>
 #include <list>
 #include <vector>
 
