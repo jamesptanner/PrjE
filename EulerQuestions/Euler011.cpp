@@ -44,7 +44,7 @@ int grid[WIDTH][HEIGHT] = {
      33, 48, 61, 43, 52, 1,  89, 19, 67, 48}};
 
 int lines[8][4][2] = {{{0, 0}, {0, 1}, {0, 2}, {0, 3}},
-                      {{0, 0}, {1, 1}, {1, 2}, {1, 3}},
+                      {{0, 0}, {1, 1}, {2, 2}, {3, 3}},
                       {{0, 0}, {1, 0}, {2, 0}, {3, 0}},
                       {{0, 0}, {1, -1}, {2, -2}, {3, -3}},
                       {{0, 0}, {0, -1}, {0, -2}, {0, -3}},
@@ -67,7 +67,7 @@ public:
           unsigned short xmax, ymax;
           xmax = x + lines[line][3][X];
           ymax = y + lines[line][3][Y];
-          if (xmax < 0 || ymax < 0 || xmax >= 20 || ymax >= 20)
+          if (|| xmax >= 20 || ymax >= 20)
             continue;
 
           unsigned int product = 1;
@@ -75,14 +75,14 @@ public:
             product *= grid[x + lines[line][dist][X]][y + lines[line][dist][Y]];
           }
           if (product > max) {
-            cout << "new max: " << max << endl;
+            std::cout << "new max: " << max << std::endl;
             max = product;
           }
         }
       }
     }
 
-    cout << "Problem 11 answer: " << max << endl;
+    std::cout << "Problem 11 answer: " << max << std::endl;
   }
 };
 REGISTER_TEST("Problem 11:Largest product in a grid", 11, Euler011);

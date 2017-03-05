@@ -1,8 +1,6 @@
 
 #include <iostream>
 
-using namespace std;
-
 class EulerQuestion {
 public:
   EulerQuestion(std::string desc, int id) : questionID(id), desc(desc) {}
